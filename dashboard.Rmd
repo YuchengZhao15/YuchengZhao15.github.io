@@ -1,0 +1,93 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+data("rest_inspec")
+rest_inspec |> 
+  filter(!is.na(boro),
+         !is.na(score),
+         boro == "MANHATTAN") |>
+  count(cuisine_description) |>
+  top_n(10, n) |> 
+  mutate(cuisine_description = fct_reorder(cuisine_description, n)) |> 
+  plot_ly(x = ~cuisine_description, 
+          y = ~n, 
+          color = ~cuisine_description, 
+          type = "bar", 
+          colors = "viridis"
+          ) |> 
+  layout(
+    title = "Top 10 Cuisine Types in Manhattan by Violations",
+    xaxis = list(title = "Cuisine Type"), 
+    yaxis = list(title = "Number of Violations")
+    )
+
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+scatter_plot = rest_inspec |> 
+  filter(!is.na(score),
+         !is.na(inspection_date)
+         ) |> 
+  sample_n(1000) |> 
+  ggplot(aes(x = inspection_date, y = score, color = boro)) +
+  geom_point() +
+  scale_color_viridis_d() +
+  labs(
+    title = "1000 Sampled Inspection Scores by Date",
+    x = "Date",
+    y = "Inspection Score",
+    color = "Borough"
+  ) +
+  theme_minimal()
+
+ggplotly(scatter_plot)
+```
+
+### Chart C
+
+```{r}
+box_plot = 
+  rest_inspec |> 
+  filter(!is.na(boro),
+         !is.na(score),
+         boro != "Missing") |> 
+  mutate(boro = fct_reorder(boro, score), ) |> 
+  ggplot(aes(x = boro, y = score, fill = boro)) +
+  geom_boxplot() +
+  scale_fill_viridis_d() +
+  labs(
+    title = "Inspection Scores by Borough",
+    x = "Borough",
+    y = "Inspection Score",
+    color = "Borough"
+  ) +
+  theme_minimal()
+
+ggplotly(box_plot)
+```
+
