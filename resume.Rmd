@@ -1,0 +1,30 @@
+---
+title: "Resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Education
+- **Columbia University** – M.S. in Biostatistics  
+  *Expected Graduation: 2026*
+
+- **UC Davis** – B.S. in Statistics; Minor in Economics  
+  *Graduated: 2024*
+
+## Professional Experience
+### Biostatistician Intern, Nanomics
+*Nov. 2023 – Feb. 2024*
+
+- Performed standard analysis on omics data to extract valuable insights and uncover patterns or correlations
+- Developed a function to read multiple sheets from an Excel file, processed and cleaned the data, and calculated correlation matrices for nanoparticle-protein intensity analysis
+
+### Data Analyst Intern, Global AI
+*Aug. 2023 – Oct. 2023*
+
+- Conducted analysis on a dataset of news sentiment signals for MSCI US index stocks from 2013 to 202
+
+## Skills
+- **Computational Skills**: R, Python, C++, MS Office, MATLAB
+- **Languages**: Chinese(Native), English(Professional Proficiency)

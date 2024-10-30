@@ -1,0 +1,15 @@
+---
+title: "My Website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# This is Yucheng's website
+
+Hello! This is Yucheng Zhao's website for P8105. I am a first year student in the M.S. Biostatistics program at the Mailman School of Public Health. Data Science I is my favorite course so far. 
+
+This is my Chinese box turtle. He/She wants to eat everything.
+
+<img src="images/chinese_box_turtle.jpg" style="width:75%">
